@@ -1319,9 +1319,9 @@ Return ONLY valid JSON, no markdown, no backticks, no extra text:
 }`;
 
   try{
-    const resp=await fetch('https://api.anthropic.com/v1/messages',{
+    const resp=await fetch('/api/chat',{
       method:'POST',
-      headers:{'Content-Type':'application/json','x-api-key':'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','anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-ipc':'true'},
+      headers:{'Content-Type':'application/json'},
       body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:2000,messages:[{role:'user',content:prompt}]})
     });
     const data=await resp.json();
@@ -1460,9 +1460,9 @@ async function sendC(){
   const th=mkThink('cbox','ct');
   const sys=`You are RiftGuide, an elite League of Legends AI coach. Player context: ${chatCtx}. Answer with deep LoL expertise — specific builds, runes, mechanics, champion tips, rank-appropriate advice. Be specific, actionable, encouraging but honest. Reference their specific champion, rank, and role when relevant. 2-6 sentences unless more detail is requested.`;
   try{
-    const r=await fetch('https://api.anthropic.com/v1/messages',{
+    const r=await fetch('/api/chat',{
       method:'POST',
-      headers:{'Content-Type':'application/json','x-api-key':'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','anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-ipc':'true'},
+      headers:{'Content-Type':'application/json'},
       body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:600,system:sys,messages:chatHist.map(m=>({role:m.role,content:m.content}))})
     });
     const data=await r.json();
@@ -1504,9 +1504,9 @@ async function fqSend(){
   const th=mkThink('faq-msgs','fqt');
   const sys=`You are RiftGuide's expert AI coach. Answer any League of Legends question (champions, builds, runes, mechanics, meta, climbing tips, strategy) and any RiftGuide platform questions. RiftGuide details: Free plan (3 analyses/month, 1 game, basic features), Pro €7.99/month (unlimited analyses, 20 games, 6-skill scoring, champion recs, blame split, climb roadmap, unlimited AI chat, progress tracking), Elite €17.99/month (everything Pro + weekly email report + champion deep dives + priority processing). Sign up with Google one click. 14-day refund. Cancel anytime. Based in Cyprus EU. Contact: riftguide4@gmail.com. Be expert, specific, helpful, concise. 3-6 sentences.`;
   try{
-    const r=await fetch('https://api.anthropic.com/v1/messages',{
+    const r=await fetch('/api/chat',{
       method:'POST',
-      headers:{'Content-Type':'application/json','x-api-key':'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','anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-ipc':'true'},
+      headers:{'Content-Type':'application/json'},
       body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:700,system:sys,messages:fqHist.map(m=>({role:m.role,content:m.content}))})
     });
     const data=await r.json();
@@ -1544,9 +1544,9 @@ async function fbSend(){
   const th=mkThink('fb-msgs','fbt');
   const sys=`You are Coach Rift, RiftGuide's friendly AI assistant. Expert League of Legends coach. Know everything about RiftGuide (Free: 3 analyses/mo, Pro €7.99/mo unlimited + all features, Elite €17.99/mo everything + weekly report. Google Sign-In. 14-day refund. Cancel anytime). Be warm, expert, concise. Max 3 sentences.`;
   try{
-    const r=await fetch('https://api.anthropic.com/v1/messages',{
+    const r=await fetch('/api/chat',{
       method:'POST',
-      headers:{'Content-Type':'application/json','x-api-key':'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','anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-ipc':'true'},
+      headers:{'Content-Type':'application/json'},
       body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:400,system:sys,messages:fbHist.map(m=>({role:m.role,content:m.content}))})
     });
     const data=await r.json();
